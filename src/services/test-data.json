@@ -1,0 +1,22 @@
+{
+    "articles": [
+        {
+            "id": "1",
+            "title": "Introducing Zero-Bundle-Size React Server Components",
+            "author": "John Doe",
+            "body": "2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size React Server Components."
+        },
+        {
+            "id": "2",
+            "title": "React v17.0",
+            "author": "John Doe",
+            "body": "The React 17 release is unusual because it doesn’t add any new developer-facing features. Instead, this release is primarily focused on making it easier to upgrade React itself."
+        },
+        {
+            "id": "3",
+            "title": "Introducing the New JSX Transform",
+            "author": "John Doe",
+            "body": "Together with the React 17 release, we’ve wanted to make a few improvements to the JSX transform, but we didn’t want to break existing setups. This is why we worked with Babel to offer a new, rewritten version of the JSX transform for people who would like to upgrade."
+        }
+    ]
+}
