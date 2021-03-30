@@ -10,7 +10,7 @@ const EditArticle = ({ hideEdit }) => {
     executePost,
   ] = useAxios(
     {
-      url: 'http://localhost:8080/articles',
+      url: 'http://localhost:8080/api/articles/',
       method: 'POST',
     },
     { manual: true },

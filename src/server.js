@@ -1,22 +1,41 @@
-import express from 'express';
-import data from './services/test-data.json';
+const express = require('express');
+
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const Article = require('./services/articleModel');
+const articlesService = require('./services/articles')(Article);
 
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
+(async () => {
+  try {
+    mongoose.Promise = Promise;
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
+    app.use(express.static('public'));
+    app.set('view engine', 'ejs');
+    app.use(bodyParser.json());
 
-app.get('/articles', (req, res) => {
-  res.status(200).json(data);
-});
+    const mongoUriString = process.env.MONGO_URI || 'mongodb://localhost/blog-like';
 
-app.use('*', (req, res) => {
-  res.status(404).send({ message: 'Not found' });
-});
+    await mongoose.connect(
+      mongoUriString,
+      { useNewUrlParser: true },
+    );
+    console.info('connected to mongo');
 
-app.listen(port);
+    app.use('/api', articlesService);
+
+    app.get('/', (req, res) => {
+      res.render('index');
+    });
+
+    app.use('*', (req, res) => {
+      res.status(404).send({ message: 'Not found' });
+    });
+
+    app.listen(port);
+  } catch (error) {
+    console.error(error);
+  }
+})();

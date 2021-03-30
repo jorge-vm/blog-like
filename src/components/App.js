@@ -5,7 +5,7 @@ import EditArticle from './EditArticle';
 
 function App() {
   const [{ data, loading, error }, refetch] = useAxios(
-    'http://localhost:8080/articles',
+    'http://localhost:8080/api/articles',
   );
 
   const [isEditShown, setIsEditShown] = useState(false);
