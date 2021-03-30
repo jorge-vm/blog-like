@@ -18,10 +18,17 @@ function App() {
   if (error) return <p>Something went wrong.</p>;
 
   return (
-    <div>
-      <ArticleList articles={data.articles} />
-      <button onClick={() => setIsEditShown(true)} type="button">Add an article</button>
-      {isEditShown && (<EditArticle hideEdit={hideEdit} />)}
+    <div className="container">
+
+      <div className="row">
+        <ArticleList articles={data.articles} />
+        <br />
+        <button className="btn btn-primary" onClick={() => setIsEditShown(true)} type="button">Add an article</button>
+      </div>
+
+      <div className="row">
+        {isEditShown && (<EditArticle hideEdit={hideEdit} />)}
+      </div>
     </div>
   );
 }

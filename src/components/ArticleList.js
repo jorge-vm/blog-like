@@ -4,7 +4,7 @@ import Article from './Article';
 
 function ArticleList({ articles }) {
   return (
-    <ul>
+    <ul className="list-group">
       {articles.map((article) => (<Article key={article.id} {...article} />))}
     </ul>
   );

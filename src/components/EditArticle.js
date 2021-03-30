@@ -23,7 +23,7 @@ const EditArticle = ({ hideEdit }) => {
       body: '',
     },
     onSubmit: (values) => {
-    //   alert(JSON.stringify(values, null, 2));
+      //   alert(JSON.stringify(values, null, 2));
       executePost({
         article: {
           values,
@@ -39,29 +39,41 @@ const EditArticle = ({ hideEdit }) => {
   return (
     <form onSubmit={formik.handleSubmit}>
 
-      <label htmlFor="title">Title</label>
-      <input
-        id="title"
-        name="title"
-        onChange={formik.handleChange}
-        value={formik.values.title}
-      />
-      <label htmlFor="author">Author</label>
-      <input
-        id="author"
-        name="author"
-        onChange={formik.handleChange}
-        value={formik.values.author}
-      />
-      <label htmlFor="body">Body</label>
-      <textarea
-        id="body"
-        name="body"
-        onChange={formik.handleChange}
-        value={formik.values.body}
-      />
+      <div className="mb-3">
+        <label htmlFor="title" className="form-label">Title</label>
+        <input
+          type="text"
+          className="form-control"
+          id="title"
+          placeholder="Title of the Article"
+          onChange={formik.handleChange}
+          value={formik.values.title}
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="author" className="form-label">Author</label>
+        <input
+          type="text"
+          className="form-control"
+          id="author"
+          placeholder="John Doe"
+          onChange={formik.handleChange}
+          value={formik.values.author}
+        />
+      </div>
 
-      <button type="submit">Submit</button>
+      <div className="mb-3">
+        <label htmlFor="body" className="form-label">Enter article here</label>
+        <textarea
+          className="form-control"
+          id="body"
+          rows="3"
+          onChange={formik.handleChange}
+          value={formik.values.body}
+        />
+      </div>
+
+      <button type="submit" className="btn btn-primary">Submit</button>
 
     </form>
 
